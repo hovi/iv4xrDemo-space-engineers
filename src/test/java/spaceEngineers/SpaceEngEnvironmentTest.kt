@@ -2,12 +2,11 @@ package spaceEngineers
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
-import spaceEngineers.SeRequest
 import spaceEngineers.commands.ObservationArgs
 import spaceEngineers.commands.ObservationMode
-import spaceEngineers.commands.SeAgentCommand
-import testhelp.TEST_AGENT
+import spaceEngineers.controller.observe
 import testhelp.checkMockObservation
+import testhelp.controller
 import testhelp.environment
 
 class SpaceEngEnvironmentTest {
@@ -16,25 +15,24 @@ class SpaceEngEnvironmentTest {
     }
 
     @Test
-    fun observeTest() = environment {
-        val observation = getSeResponse(SeRequest.command(SeAgentCommand.observe(TEST_AGENT)))
+    fun observeTest() = controller {
+        val observation = observe()
         checkMockObservation(observation)
         println("OrientationFwd: " + observation.orientationForward)
         println("OrientationUp : " + observation.orientationUp)
     }
 
     @Test
-    fun observeManyTimesTest() = environment {
+    fun observeManyTimesTest() = controller {
         for (i in 0..4) {
-            val observation = getSeResponse(SeRequest.command(SeAgentCommand.observe(TEST_AGENT)))
+            val observation = observe()
             checkMockObservation(observation)
         }
     }
 
     @Test
-    fun observeEntitiesTest() = environment {
-        val observation = getSeResponse(SeRequest.command(
-                SeAgentCommand.observe(TEST_AGENT, ObservationArgs(ObservationMode.ENTITIES))))
+    fun observeEntitiesTest() = controller {
+        val observation = observe(ObservationArgs(ObservationMode.ENTITIES))
         assertNotNull(observation)
         assertNotNull(observation.entities)
         assertTrue(observation.entities.size > 0)
@@ -43,9 +41,8 @@ class SpaceEngEnvironmentTest {
     }
 
     @Test
-    fun observeBlocksTest() = environment {
-        val observation = getSeResponse(SeRequest.command(
-                SeAgentCommand.observe(TEST_AGENT, ObservationArgs(ObservationMode.BLOCKS))))
+    fun observeBlocksTest() = controller {
+        val observation = observe(ObservationArgs(ObservationMode.BLOCKS))
         checkMockObservation(observation)
         val blocks = observation.grids.first().blocks
         assertNotNull(blocks)

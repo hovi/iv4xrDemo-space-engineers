@@ -2,8 +2,8 @@ package testhelp
 
 import eu.iv4xr.framework.spatial.Vec3
 import org.junit.jupiter.api.Assertions
-import org.junit.jupiter.api.Assertions.assertTrue
 import spaceEngineers.*
+import spaceEngineers.controller.ProprietaryJsonTcpCharacterController
 
 const val TEST_AGENT = "you"
 
@@ -20,8 +20,8 @@ fun environment(
 
 fun controller(
     agentId: String = TEST_AGENT,
-    characterController: BaseCharacterController = BaseCharacterController.localhost(agentId = agentId),
-    block: BaseCharacterController.() -> Unit
+    characterController: ProprietaryJsonTcpCharacterController = ProprietaryJsonTcpCharacterController.localhost(agentId = agentId),
+    block: ProprietaryJsonTcpCharacterController.() -> Unit
 ) {
     try {
         block(characterController)

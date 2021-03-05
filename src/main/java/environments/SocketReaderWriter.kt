@@ -4,6 +4,7 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import logger.PrintColor
 import nl.uu.cs.aplib.mainConcepts.Environment
+import spaceEngineers.SeRequest
 import java.io.*
 import java.lang.reflect.Modifier
 import java.net.InetSocketAddress
@@ -29,7 +30,13 @@ fun SocketReaderWriter.sendCommand_(cmd: Environment.EnvOperation): Any? {
     }
 }
 
+fun <T> SocketReaderWriter.processRequest(request: SeRequest<T>): T {
+    val responseJson = sendAndReceiveLine(gson.toJson(request))
+    return gson.fromJson(responseJson, request.responseType)
+}
+
 fun SocketReaderWriter.sendAndReceiveLine(line: String): String {
+    //TODO: configure gson to ignore companion object
     writer.println(line.replace(",\"Companion\":{}", ""))
     return reader.readLine()
 }

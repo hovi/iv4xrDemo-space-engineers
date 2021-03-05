@@ -3,7 +3,6 @@ package environments
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import logger.PrintColor
-import nl.uu.cs.aplib.mainConcepts.Environment
 import spaceEngineers.SeRequest
 import java.io.*
 import java.lang.reflect.Modifier
@@ -11,24 +10,6 @@ import java.net.InetSocketAddress
 import java.net.Socket
 import java.nio.charset.StandardCharsets
 
-
-fun SocketReaderWriter.sendCommand_(cmd: Environment.EnvOperation): Any? {
-    // The Environment super class uses sendCommand_ to send the json object
-    val json = cmd.arg as String
-    return when (cmd.command) {
-        "debug" -> {
-            println(json)
-            null
-        }
-        "request" -> try {
-            sendAndReceiveLine(json)
-        } catch (ex: IOException) {
-            println("I/O error: " + ex.message)
-            null
-        }
-        else -> throw IllegalArgumentException("Unknown command ${cmd.command}")
-    }
-}
 
 fun <T> SocketReaderWriter.processRequest(request: SeRequest<T>): T {
     val responseJson = sendAndReceiveLine(gson.toJson(request))

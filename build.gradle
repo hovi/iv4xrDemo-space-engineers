@@ -18,6 +18,7 @@ kotlin {
         }
         testRuns["test"].executionTask.configure {
             useJUnit()
+            useJUnitPlatform()
         }
     }
     sourceSets {

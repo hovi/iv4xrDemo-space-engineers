@@ -1,27 +1,15 @@
-package spaceEngineers.commands;
+package spaceEngineers.commands
 
-public class InteractionArgs {
-    public int interactionType;
-    public int page;
-    public int slot;
-    public boolean allowSizeChange;
-
-    public InteractionArgs(InteractionType interactionType, int slot, int page, boolean allowSizeChange) {
-        this.interactionType = interactionType.getValue();
-        this.slot = slot;
-        this.page = page;
-        this.allowSizeChange = allowSizeChange;
-    }
-
-    public InteractionArgs(InteractionType interactionType, int slot, int page) {
-        this(interactionType, slot, page, false);
-    }
-
-    public InteractionArgs(InteractionType interactionType, int slot) {
-        this(interactionType, slot, -1);
-    }
-
-    public InteractionArgs(InteractionType interactionType) {
-        this(interactionType, -1);
-    }
+class InteractionArgs @JvmOverloads constructor(
+    val interactionType: Int,
+    val slot: Int = -1,
+    val page: Int = -1,
+    val allowSizeChange: Boolean = false
+) {
+    constructor(
+        interactionType: InteractionType,
+        slot: Int = -1,
+        page: Int = -1,
+        allowSizeChange: Boolean = false
+    ) : this(interactionType.value, slot, page, allowSizeChange)
 }

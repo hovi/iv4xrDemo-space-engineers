@@ -7,11 +7,10 @@ import spaceEngineers.commands.ObservationMode
 import spaceEngineers.controller.observe
 import testhelp.checkMockObservation
 import testhelp.controller
-import testhelp.environment
 
 class SpaceEngEnvironmentTest {
     @Test
-    fun disconnectTest() = environment { 
+    fun disconnectTest() = controller {
     }
 
     @Test

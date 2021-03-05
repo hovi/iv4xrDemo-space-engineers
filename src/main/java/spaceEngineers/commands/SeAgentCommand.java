@@ -1,6 +1,5 @@
 package spaceEngineers.commands;
 
-import helperclasses.datastructures.LegacyTuple;
 import eu.iv4xr.framework.spatial.Vec3;
 
 public class SeAgentCommand {

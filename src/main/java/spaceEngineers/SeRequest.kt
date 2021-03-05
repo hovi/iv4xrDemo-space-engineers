@@ -13,13 +13,6 @@ class SeRequest<ResponseType> @JvmOverloads constructor(
 
 
     companion object {
-        /**
-         * Disconnect
-         * @return success
-         */
-        fun disconnect(): SeRequest<Boolean> {
-            return SeRequest(Boolean::class.java, RequestType.DISCONNECT)
-        }
 
         /**
          * Request an observation after executing the sent Command

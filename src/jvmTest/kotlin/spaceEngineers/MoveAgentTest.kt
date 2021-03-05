@@ -1,6 +1,6 @@
 package spaceEngineers
 
-import org.junit.jupiter.api.Test
+import kotlin.test.*
 import spaceEngineers.commands.MoveTowardsArgs
 import spaceEngineers.commands.MovementArgs
 import spaceEngineers.model.Vec3

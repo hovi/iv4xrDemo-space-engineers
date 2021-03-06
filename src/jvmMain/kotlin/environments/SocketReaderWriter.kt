@@ -70,9 +70,7 @@ class SocketReaderWriter @JvmOverloads constructor(
     }
 
     fun <T> processRequest(request: SeRequest<T>): T {
-        val responseJson = sendAndReceiveLine(gson.toJson(request)).apply {
-            println(this)
-        }
+        val responseJson = sendAndReceiveLine(gson.toJson(request))
         return gson.fromJson(responseJson, request.responseType)
     }
 

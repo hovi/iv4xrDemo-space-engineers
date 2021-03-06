@@ -18,7 +18,15 @@ data class Vec3(
         )
     }
 
+    val size: Float by lazy {
+        distanceTo(ZERO)
+    }
+
     companion object {
+        val ZERO by lazy {
+            zero()
+        }
+
         fun zero(): Vec3 {
             return Vec3(0f, 0f, 0f)
         }

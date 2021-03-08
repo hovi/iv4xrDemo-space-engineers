@@ -4,6 +4,7 @@ import environments.SocketReaderWriter
 import spaceEngineers.SeRequest
 import spaceEngineers.commands.*
 import spaceEngineers.model.SeObservation
+import spaceEngineers.transport.AlwaysReturnSameLineReaderWriter
 import spaceEngineers.transport.GsonReaderWriter
 
 class ProprietaryJsonTcpCharacterController(val agentId: String, val gsonReaderWriter: GsonReaderWriter) :
@@ -30,10 +31,24 @@ class ProprietaryJsonTcpCharacterController(val agentId: String, val gsonReaderW
     }
 
     companion object {
-        fun localhost(agentId: String): ProprietaryJsonTcpCharacterController {
+        fun localhost(
+            agentId: String,
+            gsonReaderWriter: GsonReaderWriter = GsonReaderWriter(stringLineReaderWriter = SocketReaderWriter())
+        ): ProprietaryJsonTcpCharacterController {
             return ProprietaryJsonTcpCharacterController(
                 agentId = agentId,
-                gsonReaderWriter = GsonReaderWriter(stringLineReaderWriter = SocketReaderWriter())
+                gsonReaderWriter = gsonReaderWriter
+            )
+        }
+
+        fun mock(
+            agentId: String,
+            lineToReturn: String
+        ): ProprietaryJsonTcpCharacterController {
+            return ProprietaryJsonTcpCharacterController(
+                agentId = agentId, gsonReaderWriter = GsonReaderWriter(
+                    stringLineReaderWriter = AlwaysReturnSameLineReaderWriter(response = lineToReturn)
+                )
             )
         }
     }

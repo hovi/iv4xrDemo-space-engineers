@@ -15,6 +15,7 @@ import spaceEngineers.commands.ObservationMode
 import spaceEngineers.controller.CharacterController
 import spaceEngineers.controller.ProprietaryJsonTcpCharacterController
 import testhelp.TEST_AGENT
+import testhelp.mockResponseLine
 
 @RunWith(Cucumber::class)
 class SpaceEngineersCucumberTest {
@@ -37,7 +38,7 @@ class SpaceEngineersCucumberTest {
 
     @Given("I am connected to server.")
     fun i_am_connected_to_mock_server() {
-        environment = ProprietaryJsonTcpCharacterController.localhost(agentId = TEST_AGENT)
+        environment = ProprietaryJsonTcpCharacterController.mock(agentId = TEST_AGENT, lineToReturn = mockResponseLine)
     }
 
     @When("I request for blocks.")

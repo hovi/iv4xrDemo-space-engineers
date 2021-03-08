@@ -1,5 +1,6 @@
 package testhelp
 
+import environments.closeIfCloseable
 import spaceEngineers.controller.CharacterController
 import spaceEngineers.controller.ProprietaryJsonTcpCharacterController
 
@@ -13,8 +14,6 @@ fun controller(
     try {
         block(characterController)
     } finally {
-        if (characterController is AutoCloseable) {
-            characterController.close()
-        }
+        characterController.closeIfCloseable()
     }
 }

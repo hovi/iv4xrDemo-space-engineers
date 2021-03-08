@@ -1,5 +1,6 @@
 package bdd
 
+import environments.closeIfCloseable
 import io.cucumber.java.After
 import io.cucumber.java.Before
 import io.cucumber.java.en.Given
@@ -11,12 +12,13 @@ import kotlin.test.*
 import spaceEngineers.model.SeObservation
 import spaceEngineers.commands.ObservationArgs
 import spaceEngineers.commands.ObservationMode
+import spaceEngineers.controller.CharacterController
 import spaceEngineers.controller.ProprietaryJsonTcpCharacterController
 import testhelp.TEST_AGENT
 
 @RunWith(Cucumber::class)
 class SpaceEngineersCucumberTest {
-    lateinit var environment: ProprietaryJsonTcpCharacterController
+    lateinit var environment: CharacterController
 
     val observations: MutableList<SeObservation> = mutableListOf()
 
@@ -29,7 +31,7 @@ class SpaceEngineersCucumberTest {
     fun cleanup() {
         observations.clear()
         if (this::environment.isInitialized) {
-            environment.socketReaderWriter.close()
+            environment.closeIfCloseable()
         }
     }
 

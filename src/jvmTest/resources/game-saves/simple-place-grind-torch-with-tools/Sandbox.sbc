@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <MyObjectBuilder_Checkpoint xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <CurrentSector x="0" y="0" z="0" />
-  <ElapsedGameTime>76538880000</ElapsedGameTime>
+  <ElapsedGameTime>76903040000</ElapsedGameTime>
   <SessionName>simple-place-grind-torch-with-tools</SessionName>
   <SpectatorPosition>
-    <Position x="38.487743935691476" y="76.279640155102257" z="7.54284475179247" />
-    <Forward x="-0.268589854" y="-0.619030952" z="-0.738010943" />
+    <Position x="38.487743935691491" y="76.279640155102271" z="7.5428447517924715" />
+    <Forward x="-0.268589884" y="-0.619030952" z="-0.738010943" />
     <Up x="-0.422749758" y="0.7641882" z="-0.4871335" />
     <Orientation>
       <X>-0.301384658</X>
@@ -21,13 +21,13 @@
   <ControlledObject>133936737378954547</ControlledObject>
   <Password />
   <Description />
-  <LastSaveTime>2021-03-10T14:46:39.6184787+01:00</LastSaveTime>
+  <LastSaveTime>2021-03-16T10:38:04.9755804+01:00</LastSaveTime>
   <SpectatorDistance>3.9730525</SpectatorDistance>
   <WorkshopId xsi:nil="true" />
   <WorkshopId1 xsi:nil="true" />
   <CharacterToolbar>
     <ToolbarType>Character</ToolbarType>
-    <SelectedSlot>1</SelectedSlot>
+    <SelectedSlot xsi:nil="true" />
     <Slots>
       <Slot>
         <Index>0</Index>
@@ -102,7 +102,7 @@
         <Value>
           <ClientId>0</ClientId>
           <SerialId>0</SerialId>
-          <HashedId>17672938780896032101</HashedId>
+          <HashedId>17419140778034055691</HashedId>
         </Value>
       </item>
     </dictionary>
@@ -141,7 +141,7 @@
     <RealisticSound>false</RealisticSound>
     <HackSpeedMultiplier>0.33</HackSpeedMultiplier>
     <PermanentDeath>false</PermanentDeath>
-    <AutoSaveInMinutes>5</AutoSaveInMinutes>
+    <AutoSaveInMinutes>0</AutoSaveInMinutes>
     <EnableSaving>true</EnableSaving>
     <InfiniteAmmo>false</InfiniteAmmo>
     <EnableContainerDrops>true</EnableContainerDrops>
@@ -186,7 +186,7 @@
     <EnableTurretsFriendlyFire>false</EnableTurretsFriendlyFire>
     <EnableSubgridDamage>false</EnableSubgridDamage>
     <SyncDistance>3000</SyncDistance>
-    <ExperimentalMode>false</ExperimentalMode>
+    <ExperimentalMode>true</ExperimentalMode>
     <AdaptiveSimulationQuality>true</AdaptiveSimulationQuality>
     <EnableVoxelHand>true</EnableVoxelHand>
     <RemoveOldIdentitiesH>0</RemoveOldIdentitiesH>
@@ -228,13 +228,22 @@
     <MaxPlanets>99</MaxPlanets>
     <OffensiveWordsFiltering>false</OffensiveWordsFiltering>
     <AdjustableMaxVehicleSpeed>true</AdjustableMaxVehicleSpeed>
+    <EnableMatchComponent>false</EnableMatchComponent>
+    <PreMatchDuration>0</PreMatchDuration>
+    <MatchDuration>0</MatchDuration>
+    <PostMatchDuration>0</PostMatchDuration>
+    <EnableFriendlyFire>true</EnableFriendlyFire>
+    <EnableTeamBalancing>false</EnableTeamBalancing>
+    <CharacterSpeedMultiplier>1</CharacterSpeedMultiplier>
+    <EnableRecoil>true</EnableRecoil>
+    <EnvironmentDamageMultiplier>1</EnvironmentDamageMultiplier>
   </Settings>
   <ScriptManagerData>
     <variables>
       <dictionary />
     </variables>
   </ScriptManagerData>
-  <AppVersion>1197170</AppVersion>
+  <AppVersion>1198010</AppVersion>
   <Factions>
     <Factions>
       <MyObjectBuilder_Faction>
@@ -260,6 +269,8 @@
         <IconColor x="0" y="0" z="0" />
         <FactionIcon>Textures\FactionLogo\PirateIcon.dds</FactionIcon>
         <TransferedPCUDelta>0</TransferedPCUDelta>
+        <Score>0</Score>
+        <ObjectivePercentageCompleted>0</ObjectivePercentageCompleted>
       </MyObjectBuilder_Faction>
     </Factions>
     <Players>
@@ -285,21 +296,22 @@
     </PlayerToFactionsVis>
   </Factions>
   <Mods />
+  <CreativeTools />
   <Scenario Type="MyObjectBuilder_ScenarioDefinition" Subtype="EasyStart1" />
   <RespawnCooldowns />
   <Identities>
     <MyObjectBuilder_Identity>
       <IdentityId>144115188075855879</IdentityId>
-      <DisplayName>KOM</DisplayName>
+      <DisplayName>premek.paska</DisplayName>
       <CharacterEntityId>133936737378954547</CharacterEntityId>
       <Model>Default_Astronaut</Model>
-      <ColorMask x="1" y="0" z="0" />
+      <ColorMask x="0.608333349" y="0" z="7.450581E-09" />
       <BlockLimitModifier>0</BlockLimitModifier>
-      <LastLoginTime>2021-03-10T14:46:02.2466468+01:00</LastLoginTime>
+      <LastLoginTime>2021-03-16T10:37:06.704802+01:00</LastLoginTime>
       <SavedCharacters>
         <long>133936737378954547</long>
       </SavedCharacters>
-      <LastLogoutTime>2021-03-10T14:46:39.6364804+01:00</LastLogoutTime>
+      <LastLogoutTime>2021-03-16T10:38:04.9755804+01:00</LastLogoutTime>
       <RespawnShips />
       <LastDeathPosition xsi:nil="true" />
       <ActiveContracts />
@@ -310,7 +322,7 @@
       <DisplayName>Space Pirates</DisplayName>
       <CharacterEntityId>0</CharacterEntityId>
       <BlockLimitModifier>0</BlockLimitModifier>
-      <LastLoginTime>2021-03-10T14:46:02.7316419+01:00</LastLoginTime>
+      <LastLoginTime>2021-03-16T10:37:07.7394766+01:00</LastLoginTime>
       <SavedCharacters />
       <LastLogoutTime>0001-01-01T00:00:00</LastLogoutTime>
       <RespawnShips />
@@ -326,10 +338,10 @@
         <Key>
           <ClientId>0</ClientId>
           <SerialId>0</SerialId>
-          <HashedId>17672938780896032101</HashedId>
+          <HashedId>17419140778034055691</HashedId>
         </Key>
         <Value>
-          <DisplayName>KOM</DisplayName>
+          <DisplayName>premek.paska</DisplayName>
           <IdentityId>144115188075855879</IdentityId>
           <Connected>true</Connected>
           <ForceRealPlayer>false</ForceRealPlayer>
@@ -480,10 +492,13 @@
           <RemoteAdminSettings>0</RemoteAdminSettings>
           <PromoteLevel>None</PromoteLevel>
           <BuildColorSlot>0</BuildColorSlot>
+          <IsWildlifeAgent>false</IsWildlifeAgent>
         </Value>
       </item>
     </dictionary>
   </AllPlayersData>
+  <ChatHistory />
+  <FactionChatHistory />
   <NonPlayerIdentities>
     <long>144115188075855880</long>
   </NonPlayerIdentities>
@@ -597,7 +612,7 @@
     </MyObjectBuilder_SessionComponent>
     <MyObjectBuilder_SessionComponent xsi:type="MyObjectBuilder_SectorWeatherComponent">
       <BaseSunDirection x="0.339467347" y="0.709795356" z="-0.617213368" />
-      <SunDirectionNormalized x="-0.0248741824" y="0.65484" z="-0.7553582" />
+      <SunDirectionNormalized x="-0.05470842" y="0.645808" z="-0.7615374" />
       <WeatherPlanetData />
     </MyObjectBuilder_SessionComponent>
     <MyObjectBuilder_SessionComponent xsi:type="MyObjectBuilder_SessionComponentAssetModifiers" />
@@ -631,6 +646,11 @@
       <AnalysisPerFactionCurrency />
     </MyObjectBuilder_SessionComponent>
     <MyObjectBuilder_SessionComponent xsi:type="MyObjectBuilder_SessionComponentGameInventory" />
+    <MyObjectBuilder_SessionComponent xsi:type="MyObjectBuilder_SessionComponentMatch">
+      <State>0</State>
+      <RemainingTimeInMinutes>-1.5372287E+10</RemainingTimeInMinutes>
+      <IsRunning>true</IsRunning>
+    </MyObjectBuilder_SessionComponent>
     <MyObjectBuilder_SessionComponent xsi:type="MyObjectBuilder_MySessionComponentPanels" />
     <MyObjectBuilder_SessionComponent xsi:type="MyObjectBuilder_SessionComponentReplay">
       <EntityReplayData>
@@ -6729,22 +6749,9 @@
       <LevelScriptFiles xsi:nil="true" />
       <StateMachines xsi:nil="true" />
       <Questlog>
-        <LineData>
-          <MultilineData>
-            <Completed>false</Completed>
-            <IsObjective>false</IsObjective>
-            <Data>Hello, Engineer! My name is Good.bot. I am an AI teacher that helps you by offering directions. Let's get you started! You can access useful information in the help screen.</Data>
-            <CharactersDisplayed>418</CharactersDisplayed>
-          </MultilineData>
-          <MultilineData>
-            <Completed>false</Completed>
-            <IsObjective>true</IsObjective>
-            <Data>Press [F1] to open help screen.</Data>
-            <CharactersDisplayed>0</CharactersDisplayed>
-          </MultilineData>
-        </LineData>
+        <LineData />
         <Title>Good.bot: Introduction</Title>
-        <Visible>true</Visible>
+        <Visible>false</Visible>
         <IsUsedByVisualScripting>false</IsUsedByVisualScripting>
       </Questlog>
       <ExclusiveHighlights>
@@ -6754,7 +6761,7 @@
     </MyObjectBuilder_SessionComponent>
     <MyObjectBuilder_SessionComponent xsi:type="MyObjectBuilder_AntennaSessionComponent" />
     <MyObjectBuilder_SessionComponent xsi:type="MyObjectBuilder_EnvironmentBotSpawningSystem">
-      <TimeSinceLastEventInMs>94134</TimeSinceLastEventInMs>
+      <TimeSinceLastEventInMs>12050</TimeSinceLastEventInMs>
     </MyObjectBuilder_SessionComponent>
     <MyObjectBuilder_SessionComponent xsi:type="MyObjectBuilder_TradingManager" />
     <MyObjectBuilder_SessionComponent xsi:type="MyObjectBuilder_CoordinateSystem">
@@ -6819,9 +6826,11 @@
   <CustomSkybox />
   <VicinityModelsCache />
   <VicinityArmorModelsCache>
-    <string>Models\Components\Sphere.mwm</string>
     <string>Models\Characters\Astronaut\SE_astronaut.mwm</string>
     <string>Models\Cubes\Large\Armor\SquarePlate.mwm</string>
   </VicinityArmorModelsCache>
   <VicinityVoxelCache />
+  <RemoteAdminSettings>
+    <dictionary />
+  </RemoteAdminSettings>
 </MyObjectBuilder_Checkpoint>

@@ -6,64 +6,45 @@ It is not intended for general uses yet, other than as a testing project for the
 
 <img src="./docs/SE-sotf1.png" width="100%">
 
-# Original README content below
+# Setup
 
-This is a demo version 2.x for the [iv4XR Agent-based Testing Framework](https://github.com/iv4xr-project/aplib),
-demonstrating that iv4XR test agents can control a game called _Lab Recruits_ to perform testing tasks.
-The game executable is no longer included in the repository. It might be included in certain releases, or else you need to build it yourself
-from its [repository](https://github.com/iv4xr-project/labrecruits).
+## Requirements
 
-You will need correct versions of the iv4XR Framework and the game Lab Recruits, which are compatible with this version of Demo. Check the `pom.xml` to know which versions are needed.
+Project requires [aplib](https://github.com/iv4xr-project/aplib) dependency. First build aplib and install it to maven local.
+Other possibility at the moment is to change dependency do jitpack:
 
-   <img src="./docs/LRSS1.png" width="48%"><img src="./docs/LRSS3.png" width="50%">
+```
+implementation 'com.github.iv4xr-project:aplib:v1.2.0'
+```
 
-**Work in progress notice.** Keep in mind that the work here is still in progress. Things may look ugly while we are working on them, and things may change.
+## Clone repo:
 
-**What is the demo?** A set of JUnit test classes demonstrating how iv4xr test agents are used to implement a number of testing tasks for the game _Lab Recruits_. These classes are located in `src/test/java/agents/demo`. You can simply run them, or modify them yourself. When you run them you don't usually see anything because the tests run pretty fast. You can insert pause-points yourself (e.g. using console-read).
+```
+git clone git@github.com:iv4xr-project/iv4xrDemo-space-engineers.git
+```
 
-**The Lab Recruits Game.** It is a 3D game (a screenshot is shown above) written for the purpose of testing AI (like the AI of our iv4xr test agents). It features custom level that you can define yourself through a CSV file. Keep in mind that the game is also work in progress. More about this game can be found in its [repository](https://github.com/iv4xr-project/labrecruits).
+## Running unit tests
 
-### Deploying the demo
+We are using gradle as build system. To build and run unit tests, run:
 
-Build an executable of the [Lab Recruits](https://github.com/iv4xr-project/labrecruits). To do this you can clone or download the source code of this game. Open the project in Unity (note the specific version it needs) and build the executable from there.
+```
+./gradlew :cleanJvmTest :jvmTest --tests "spaceEngineers.mock.*"
+```
 
-For Mac: put the produced `LabRecruits.app` in `gym/Mac/bin`. For Windows: put the produced files including `LabRecruits.exe` in `gym/Windows/bin`.
+## Running iv4xr tests
 
-The demo classes are in `src/test/java/agents/demo`. The demos are by default non-visual (you don't literally see the game runs). Set the variable `TestSettings.USE_GRAPHICS` in the corresponding demo-class to `true` if you want it to be visual.
-
-* Eclipse
-
-   This will allow you to run/modify/rerun the demo classes. Import the project into Eclipse as a **maven project**. The demo classes are in `src/test/java/agents/demo`. You can run them as junit tests.
-
-* Maven
-
-   This is if you just want to check that the project builds and that all its tests pass.
-   Just do `mvn compile` and `mvn test` at the project root.
-
-### Other documentations
-
-* For iv4xr team: [World Object Model](./docs/Observation.md)
-* For iv4xr team: [where to find goals and tactic](./docs/LRtestingLib.md)
-* For others: [basic interface to control _Lab Recruits_](./docs/BasicInterface.md)
-
-### What's in the package
-
-* `./src` the source files. It follows Maven's convention, so the root of the source files is in `src/main/java` and the root of tests' source files is in `src/test/java`.
-* `./gym` contains the binary of the _Lab Recruits_ game (macos and windows).
-* `./src/test/resources/levels` contain sample level definitions for _Lab Recruits_.
+Require Space Engineers running with iv4xr plugin enabled.
 
 
-### Contributors
+```
+./gradlew :cleanJvmTest :jvmTest --tests "spaceEngineers.iv4xr.*"
+```
 
-**Computer Science students from Utrecht University:**
-Adam Smits,
-August van Casteren,
-Bram Smit,
-Frank Hoogmoed,
-Jacco van Mourik,
-Jesse van de Berg,
-Maurin Voshol,
-Menno Klunder,
-Stijn Hinlopen,
-Tom Tanis.
-**Others:** Wishnu Prasetya, Naraenda Prasetya.
+
+## Running BDD feature tests
+
+Tests scenarios require Space Engineers running with iv4xr plugin enabled.
+
+So far we run BDD tests from Idea.
+
+* Right-click .feature file in Jetbrains IDEA (in src/jvmTest/resources/features) and select "Run". 

@@ -6,6 +6,9 @@ It is not intended for general uses, other than as a testing project for the dev
 
 <img src="./docs/SE-sotf1.png" width="100%">
 
+Demo is written in Kotlin, which is JVM language by JetBrains and is fully interoperable with Java, i.e. can be used seamless from Java while allowing us to write less code with same functionality.
+
+
 # Setup
 
 ## Requirements
@@ -17,15 +20,24 @@ Other possibility at the moment is to change dependency do JitPack:
 implementation 'com.github.iv4xr-project:aplib:v1.2.0'
 ```
 
-## Clone repo:
+## Cloning repo:
 
 ```
 git clone git@github.com:iv4xr-project/iv4xrDemo-space-engineers.git
 ```
 
+## Building project
+
+We are using Gradle as the build system. To build project, run gradle task `build`:
+
+```
+./gradlew build
+```
+
+
 ## Running unit tests
 
-We are using Gradle as the build system. To build and run unit tests, run:
+To build and run unit tests, run:
 
 ```
 ./gradlew :cleanJvmTest :jvmTest --tests "spaceEngineers.mock.*"
@@ -45,6 +57,7 @@ The tests require Space Engineers running with the iv4XR plugin enabled.
 
 Tests scenarios also require Space Engineers running with the iv4XR plugin enabled.
 
-For now we run BDD tests from Idea.
+For now, we run BDD tests from IDEA.
 
-* Right-click .feature file in Jetbrains IDEA (in src/jvmTest/resources/features) and select "Run". 
+* Make sure you have installed [plugins](https://www.jetbrains.com/help/idea/enabling-cucumber-support-in-project.html#cucumber-plugin) `Gherkin` and `Cucumber for Java`
+* Right-click [.feature file](https://github.com/iv4xr-project/iv4xrDemo-space-engineers/tree/se-dev/src/jvmTest/resources/features) in IDEA and select "Run". 

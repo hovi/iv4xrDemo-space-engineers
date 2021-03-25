@@ -31,6 +31,10 @@ class ContextControllerWrapper(
 
     fun equipAndPlace(toolbarLocation: ToolbarLocation): SeObservation {
         equip(toolbarLocation)
+        return place()
+    }
+
+    fun place(): SeObservation {
         return controller.interact(InteractionArgs(InteractionType.PLACE))
     }
 

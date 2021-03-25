@@ -191,8 +191,7 @@ class SpaceEngineersCucumberTest {
     @When("Character selects block {string} and places it.")
     fun character_places_selects_block_and_places_it(blockType: String) {
         val toolbarLocation: ToolbarLocation = context.blockToolbarLocation(blockType)
-        environment.equip(toolbarLocation)
-        environment.interact(InteractionArgs(InteractionType.PLACE))
+        environment.equipAndPlace(toolbarLocation)
     }
 
     @Then("I see no block of type {string}.")

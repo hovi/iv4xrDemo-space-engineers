@@ -2,6 +2,7 @@ package testhelp
 
 import environments.closeIfCloseable
 import spaceEngineers.controller.CharacterController
+import spaceEngineers.controller.ContextControllerWrapper
 import spaceEngineers.controller.ProprietaryJsonTcpCharacterController
 import java.io.File
 
@@ -32,6 +33,22 @@ fun controller(
     agentId: String = TEST_AGENT,
     characterController: CharacterController = ProprietaryJsonTcpCharacterController.localhost(agentId),
     block: CharacterController.() -> Unit
+) {
+    try {
+        block(characterController)
+    } finally {
+        characterController.closeIfCloseable()
+    }
+}
+
+fun controllerWrapper(
+    agentId: String = TEST_AGENT,
+    characterController: ContextControllerWrapper = ContextControllerWrapper(
+        ProprietaryJsonTcpCharacterController.localhost(
+            agentId
+        )
+    ),
+    block: ContextControllerWrapper.() -> Unit
 ) {
     try {
         block(characterController)

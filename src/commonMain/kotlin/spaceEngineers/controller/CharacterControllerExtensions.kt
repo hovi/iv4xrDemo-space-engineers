@@ -30,6 +30,24 @@ fun CharacterController.blockingMoveForwardByDistance(
     error("timeout after $maxTries tries, currentDistance: ${observe().position.distanceTo(startPosition)}")
 }
 
+fun CharacterController.blockingRotateUntilOrientationForward(
+    finalOrientation: Vec3,
+    rotation: Vec3,
+    delta: Float = 0.01f,
+    maxTries: Int = 1000,
+): SeObservation {
+    repeat(maxTries) {
+        val observation = moveAndRotate(MovementArgs(rotation3 = rotation))
+        observation.let { it.orientationForward }
+            .let { orientationForward ->
+                if (finalOrientation.similar(orientationForward, delta = delta)) {
+                    println("DONE")
+                    return observation
+                }
+            }
+    }
+    error("timeout after $maxTries tries")
+}
 
 fun CharacterController.observe(): SeObservation {
     return observe(ObservationArgs())

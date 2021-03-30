@@ -38,7 +38,7 @@ pipeline {
             junit 'target/surefire-reports/**/*.xml'
         }
         success {
-            echo 'It ran succesfully' 
+            echo 'It ran succesfullytestbranch2' 
             slackSend (channel: '#jenkins-notifications', color: '#00FF00', message: "It ran succesfully! View results at: ${env.BUILD_URL} \n")
         }
         failure {

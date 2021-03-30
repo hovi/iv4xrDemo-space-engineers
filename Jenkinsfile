@@ -42,7 +42,7 @@ pipeline {
             slackSend (channel: '#jenkins-notifications', color: '#00FF00', message: "It ran succesfully! View results at: ${env.BUILD_URL} \n")
         }
         failure {
-            echo 'There was an error'
+            echo 'There was an errorasdf'
             slackSend (channel: '#jenkins-notifications', color: '#FF0000', message: "It failed... View errors at: ${env.BUILD_URL}\n ")
         }
         

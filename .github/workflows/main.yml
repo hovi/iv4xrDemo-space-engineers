@@ -29,6 +29,8 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
+      - name: Change wrapper permissions
+        run: chmod +x ./gradlew
 
       # Runs a single command using the runners shell
       - name: Run a one-line script

@@ -35,7 +35,7 @@ pipeline {
         
         always {
             echo 'Stages complete..'
-            junit 'target/surefire-reports/**/*.xml'
+            junit 'dfsfdsfdasfdstarget/surefire-reports/**/*.xml'
         }
         success {
             echo 'It ran succesfully' 

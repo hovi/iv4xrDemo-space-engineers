@@ -1,13 +1,11 @@
 package spaceEngineers.iv4xr.goal
 
-import environments.seEnv
+import environments.SeAgentState
 import eu.iv4xr.framework.mainConcepts.W3DAgentState
 import eu.iv4xr.framework.spatial.Vec3
 import nl.uu.cs.aplib.mainConcepts.Goal
 import nl.uu.cs.aplib.mainConcepts.GoalStructure
 import nl.uu.cs.aplib.mainConcepts.Tactic
-import spaceEngineers.commands.ObservationArgs
-import spaceEngineers.commands.ObservationMode
 import spaceEngineers.model.SeBlock
 import spaceEngineers.model.allBlocks
 import kotlin.math.abs
@@ -39,7 +37,7 @@ class GoalBuilder(
 
     fun blockOfTypeExists(blockType: String, tactic: Tactic = tactics.doNothing()): GoalStructure {
         return Goal("Block of type $blockType exists")
-            .toSolve { belief: W3DAgentState ->
+            .toSolve { belief: SeAgentState ->
                 belief.seEnv.observeForNewBlocks()
                 belief.seEnv.context.allNewestBlocks.any { it.blockType == blockType }
             }
@@ -50,7 +48,7 @@ class GoalBuilder(
 
     fun alwaysSolved(tactic: Tactic = tactics.doNothing()): GoalStructure {
         return Goal("alwaysSolved")
-            .toSolve { belief: W3DAgentState ->
+            .toSolve { belief: SeAgentState ->
                 true
             }
             .withTactic(
@@ -90,9 +88,9 @@ class GoalBuilder(
     ): GoalStructure {
         Thread.sleep(500)
         return Goal("lastBuiltBlockIsAtPercentageIntegrity($percentage)")
-            .toSolve { belief: W3DAgentState ->
+            .toSolve { belief: SeAgentState ->
                 belief.seEnv.run {
-                    controller.observe(ObservationArgs(ObservationMode.BLOCKS)).allBlocks.find { context.lastNewBlockId == it.id }
+                    controller.observer.observeBlocks().allBlocks.find { context.lastNewBlockId == it.id }
                         ?.let { foundBlock ->
                             checkFunction(foundBlock)
                         } ?: false

@@ -1,15 +1,15 @@
 package spaceEngineers.iv4xr
 
+import environments.SeAgentState
 import environments.SeEnvironment
-import environments.observe
 import eu.iv4xr.framework.mainConcepts.TestAgent
 import eu.iv4xr.framework.mainConcepts.TestDataCollector
-import eu.iv4xr.framework.mainConcepts.W3DAgentState
 import eu.iv4xr.framework.spatial.Vec3
 import nl.uu.cs.aplib.AplibEDSL.SEQ
 import nl.uu.cs.aplib.mainConcepts.GoalStructure
 import org.junit.jupiter.api.Test
 import spaceEngineers.controller.ContextControllerWrapper
+import spaceEngineers.controller.OldProtocolSpaceEngineers
 import spaceEngineers.controller.ProprietaryJsonTcpCharacterController
 import spaceEngineers.controller.SpaceEngineersTestContext
 import spaceEngineers.iv4xr.goal.GoalBuilder
@@ -26,7 +26,11 @@ class BasicIv4xrTest {
         val context = SpaceEngineersTestContext()
         context.blockTypeToToolbarLocation[blockType] = ToolbarLocation(1, 0)
         val controller = ProprietaryJsonTcpCharacterController.localhost(agentId)
-        val controllerWrapper = ContextControllerWrapper(controller, context = context)
+        val controllerWrapper =
+            ContextControllerWrapper(
+                spaceEngineers = OldProtocolSpaceEngineers(controller),
+                context = context
+            )
         val theEnv = SeEnvironment(
             controller = controllerWrapper,
             worldId = "simple-place-grind-torch-with-tools",
@@ -38,7 +42,7 @@ class BasicIv4xrTest {
 
         val dataCollector = TestDataCollector()
 
-        val myAgentState = W3DAgentState()
+        val myAgentState = SeAgentState(agentId = agentId)
 
 
         val testAgent = TestAgent(agentId, "some role name, else nothing")
@@ -93,11 +97,10 @@ class BasicIv4xrTest {
         testAgent.setGoal(testingTask)
 
         var i = 0
-        myAgentState.observe()
         while (testingTask.status.inProgress() && i <= 1500) {
+            testAgent.update()
             println("*** $i, ${myAgentState.wom.agentId} @${myAgentState.wom.position}")
             i++
-            testAgent.update()
         }
 
         testingTask.printGoalStructureStatus()
